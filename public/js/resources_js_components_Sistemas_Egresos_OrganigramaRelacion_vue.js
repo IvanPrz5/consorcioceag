@@ -60,7 +60,7 @@ __webpack_require__.r(__webpack_exports__);
     rellenarOrganigrama: function rellenarOrganigrama() {
       var _this = this;
       var empresa = JSON.parse(localStorage.getItem("_empresa"));
-      axios.get("/consorcioceag/public/api/organigramaActivo/" + this.año + "/" + empresa.id).then(function (response) {
+      axios.get("/api/organigramaActivo/" + this.año + "/" + empresa.id).then(function (response) {
         _this.detalle = response.data;
       })["catch"](function (error) {
         _this.mostrarNoificacion("No es posible cargar de Organigrama", true);
@@ -69,7 +69,7 @@ __webpack_require__.r(__webpack_exports__);
     cargaOrganigramaDisponibles: function cargaOrganigramaDisponibles() {
       var _this2 = this;
       var empresa = JSON.parse(localStorage.getItem("_empresa"));
-      axios.get("/consorcioceag/public/api/organigramaNoAsignado/" + this.año + "/" + empresa.id).then(function (response) {
+      axios.get("/api/organigramaNoAsignado/" + this.año + "/" + empresa.id).then(function (response) {
         _this2.orgaTipo = response.data;
       })["catch"](function (error) {
         _this2.mostrarNoificacion("No es posible cargar de Organigrama", true);
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
         if (typeof this.orgaNuevo.id === "undefined") {
           this.error = "POR FAVOR COLOQUE UN AÑO VALIDO";
         } else {
-          axios.post("/consorcioceag/public/api/crearOrganigramaDetalle", {
+          axios.post("/api/crearOrganigramaDetalle", {
             idEmpresa: empresa.id,
             idOrganigrama: this.orgaNuevo.id,
             año: this.año,
@@ -120,7 +120,7 @@ __webpack_require__.r(__webpack_exports__);
     editarItem: function editarItem(dialog, id) {
       var _this4 = this;
       if (this.$refs.formEditar.validate()) {
-        axios.post("/consorcioceag/public/api/editarOrganigramaDetalle", {
+        axios.post("/api/editarOrganigramaDetalle", {
           id: id,
           nombre: this.nombreEditar
         }).then(function (response) {
@@ -136,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     BorraItem: function BorraItem(dialog, id) {
       var _this5 = this;
-      axios["delete"]("/consorcioceag/public/api/borrarOrganigramaDetalle/" + id).then(function (response) {
+      axios["delete"]("/api/borrarOrganigramaDetalle/" + id).then(function (response) {
         _this5.rellenarOrganigrama();
         dialog.value = false;
       })["catch"](function (error) {

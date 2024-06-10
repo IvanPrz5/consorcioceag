@@ -112,7 +112,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
         //  console.log("")
         // data.append("_method", "PUT");
-        axios.post("/consorcioceag/public/api/egresos/subirImagen", data, {
+        axios.post("/api/egresos/subirImagen", data, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
@@ -130,7 +130,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     pdfSolicitud: function pdfSolicitud(id) {
       var _this2 = this;
       this.loadingSolicitud = true;
-      axios.get("/consorcioceag/public/api/reporteEgresoSolicitud/" + id).then(function (response) {
+      axios.get("/api/reporteEgresoSolicitud/" + id).then(function (response) {
         // console.log( response  )
 
         window.open(response.data, "_blank"); //to open in new tab
@@ -143,7 +143,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     },
     pdfAutorizacion: function pdfAutorizacion(id) {
       var _this3 = this;
-      axios.get("/consorcioceag/public/api/reporteEgresoAutorizacion/" + id).then(function (response) {
+      axios.get("/api/reporteEgresoAutorizacion/" + id).then(function (response) {
         //  console.log( response  )
 
         window.open(response.data, "_blank"); //to open in new tab
@@ -153,7 +153,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     },
     pdfRecepcion: function pdfRecepcion(id) {
       var _this4 = this;
-      axios.get("/consorcioceag/public/api/reporteRecepcion/" + id).then(function (response) {
+      axios.get("/api/reporteRecepcion/" + id).then(function (response) {
         //  console.log( response  )
 
         window.open(response.data, "_blank"); //to open in new tab
@@ -165,13 +165,13 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       var _this5 = this;
       var empresa = JSON.parse(localStorage.getItem("_empresa"));
       if (this.todoAnio) {
-        axios.get("/consorcioceag/public/api/egresos/allegresosXml/0/" + this.año + "/" + empresa.id).then(function (response) {
+        axios.get("/api/egresos/allegresosXml/0/" + this.año + "/" + empresa.id).then(function (response) {
           _this5.items = response.data;
         })["catch"](function (error) {
           _this5.mostrarNoificacion("No es posible cargar de " + _this5.titulo, true);
         });
       } else {
-        axios.get("/consorcioceag/public/api/egresos/allegresosXml/" + this.mes + "/" + this.año + "/" + empresa.id).then(function (response) {
+        axios.get("/api/egresos/allegresosXml/" + this.mes + "/" + this.año + "/" + empresa.id).then(function (response) {
           _this5.items = response.data;
         })["catch"](function (error) {
           _this5.mostrarNoificacion("No es posible cargar de " + _this5.titulo, true);
@@ -185,7 +185,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     cargarAño: function cargarAño(año) {},
     apiMeses: function apiMeses() {
       var _this6 = this;
-      axios.get("/consorcioceag/public/api/meses").then(function (response) {
+      axios.get("/api/meses").then(function (response) {
         _this6.meses = response.data;
         var dateObj = new Date();
 
@@ -198,7 +198,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     },
     apiAños: function apiAños() {
       var _this7 = this;
-      axios.get("/consorcioceag/public/api/años").then(function (response) {
+      axios.get("/api/años").then(function (response) {
         _this7.años = response.data;
         var dateObj = new Date();
 
@@ -229,7 +229,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     this.dialogDelete = false;
   }), "borrar", function borrar() {
     var _this8 = this;
-    axios["delete"]("/consorcioceag/public/api/menu/borrar/" + this.seleccionado.id).then(function (response) {
+    axios["delete"]("/api/menu/borrar/" + this.seleccionado.id).then(function (response) {
       _this8.dialogDelete = false;
       _this8.mostrarNoificacion("  ESTATUS ACTUALIZADO", false);
       _this8.initialize();

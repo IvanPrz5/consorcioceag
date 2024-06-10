@@ -24,8 +24,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     allEmpresas: function allEmpresas() {
       var _this = this;
-      axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token'); // obtener el token de la aplicaccion
-      axios.get('/consorcioceag/public/api/allEmpresas/' + this.$store.state.user.id).then(function (response) {
+      axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("token"); // obtener el token de la aplicaccion
+      axios.get("/api/allEmpresas/" + this.$store.state.user.id).then(function (response) {
         _this.empresas = response.data;
         if (_this.empresas.length == 1) {
           _this.sistema(_this.empresas[0]);
@@ -39,8 +39,8 @@ __webpack_require__.r(__webpack_exports__);
     sistema: function sistema(empresa) {
       this.$store.state.empresa = empresa;
       console.log(empresa);
-      localStorage.setItem('_empresa', JSON.stringify(empresa)); // para manjarlo local stor3e
-      this.$router.replace('SeleccionSistemas');
+      localStorage.setItem("_empresa", JSON.stringify(empresa)); // para manjarlo local stor3e
+      this.$router.replace("SeleccionSistemas");
     }
   }
 });
@@ -81,12 +81,14 @@ var render = function render() {
     }, [empresa.logo == "/" ? _c("v-img", {
       attrs: {
         contain: "",
-        height: "250"
+        height: "250",
+        src: "https://i.pinimg.com/564x/17/ec/70/17ec70005dc416f35c2dfa5c574c0414.jpg"
       }
     }) : _c("v-img", {
       attrs: {
         contain: "",
-        height: "250"
+        height: "250",
+        src: empresa.logo
       }
     }), _vm._v(" "), _c("v-card-title", {}, [_vm._v(_vm._s(empresa.nombre))]), _vm._v(" "), _c("v-card-text", [_c("v-row", {
       staticClass: "mx-0",
@@ -95,9 +97,9 @@ var render = function render() {
       }
     }, [_c("div", {
       staticClass: "grey--text ms-4"
-    }, [_vm._v("\r\n                                    " + _vm._s(empresa.nombreNominativo) + "\r\n                                ")])]), _vm._v(" "), _c("div", {
+    }, [_vm._v("\n                  " + _vm._s(empresa.nombreNominativo) + "\n                ")])]), _vm._v(" "), _c("div", {
       staticClass: "my-4 text-subtitle-1"
-    }, [_vm._v("\r\n                                " + _vm._s(empresa.rfc) + "\r\n                            ")])], 1), _vm._v(" "), _c("v-divider", {
+    }, [_vm._v("\n                " + _vm._s(empresa.rfc) + "\n              ")])], 1), _vm._v(" "), _c("v-divider", {
       staticClass: "mx-4"
     }), _vm._v(" "), _c("v-card-title", [_vm._v("Selecioname")])], 1)], 1);
   }), _vm._v(" "), _c("div", [_vm.empresas == null ? _c("div", [_c("h1", {
@@ -105,10 +107,11 @@ var render = function render() {
       align: "center",
       justify: "center"
     }
-  }, [_vm._v("NO TIENE ASIGNADO NINGUNA EMPRESA , VERIFICAR SON EL ADMINISTRADOR")]), _vm._v(" "), _c("v-img", {
+  }, [_vm._v("\n              NO TIENE ASIGNADO NINGUNA EMPRESA , VERIFICAR SON EL\n              ADMINISTRADOR\n            ")]), _vm._v(" "), _c("v-img", {
     attrs: {
       contain: "",
-      height: "500"
+      height: "500",
+      src: "img/lapizRoto.png"
     }
   })], 1) : _vm._e()])], 2)], 1)], 1)]);
 };

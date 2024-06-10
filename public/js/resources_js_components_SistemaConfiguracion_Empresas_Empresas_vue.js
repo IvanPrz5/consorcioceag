@@ -54,7 +54,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     initialize: function initialize() {
       var _this = this;
-      axios.get('/consorcioceag/public/api/empresas/allEmpresas').then(function (response) {
+      axios.get('/api/empresas/allEmpresas').then(function (response) {
         _this.items = response.data;
       })["catch"](function (error) {
         _this.mostrarNoificacion('No es posible cargar de ' + _this.titulo, true);

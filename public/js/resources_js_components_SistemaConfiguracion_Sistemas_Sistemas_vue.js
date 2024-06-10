@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     initialize: function initialize() {
       var _this = this;
-      axios.get('/consorcioceag/public/api/sistemas/allSistemas').then(function (response) {
+      axios.get('/api/sistemas/allSistemas').then(function (response) {
         _this.items = response.data;
       })["catch"](function (error) {
         _this.mostrarNoificacion('No es posible cargar de ' + _this.titulo, true);
@@ -80,7 +80,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     borrar: function borrar() {
       var _this2 = this;
-      axios["delete"]('/consorcioceag/public/api/sistemas/borrar/' + this.Seleccionado.id).then(function (response) {
+      axios["delete"]('/api/sistemas/borrar/' + this.Seleccionado.id).then(function (response) {
         _this2.dialogDelete = false;
         _this2.mostrarNoificacion('  ESTATUS ACTUALIZADO', false);
         _this2.initialize();

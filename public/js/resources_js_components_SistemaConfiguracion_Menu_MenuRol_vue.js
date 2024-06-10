@@ -30,7 +30,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     cargaRoles: function cargaRoles() {
       var _this = this;
-      axios.get('/consorcioceag/public/api/roles').then(function (response) {
+      axios.get('/api/roles').then(function (response) {
         _this.roles = response.data;
       })["catch"](function (error) {
         console.log('error  roles ' + error);
@@ -55,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
     cargaMenu: function cargaMenu() {
       var _this2 = this;
       try {
-        axios.get('/consorcioceag/public/api/menu/menuPrincipal/' + this.selectRol.id).then(function (response) {
+        axios.get('/api/menu/menuPrincipal/' + this.selectRol.id).then(function (response) {
           _this2.menu = response.data;
         })["catch"](function (error) {
           return null;
@@ -67,7 +67,7 @@ __webpack_require__.r(__webpack_exports__);
     cargaSubMenu: function cargaSubMenu() {
       var _this3 = this;
       try {
-        axios.get('/consorcioceag/public/api/menu/subMenuPrincipal/' + this.selectRol.id + '/' + this.selectMenu.id).then(function (response) {
+        axios.get('/api/menu/subMenuPrincipal/' + this.selectRol.id + '/' + this.selectMenu.id).then(function (response) {
           _this3.subMenu = response.data;
         })["catch"](function (error) {
           console.log(error);
@@ -78,7 +78,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     eliminarMenu: function eliminarMenu(id, tipoMenu) {
       try {
-        axios["delete"]('/consorcioceag/public/api/menu/eliminar/' + id).then(function (response) {
+        axios["delete"]('/api/menu/eliminar/' + id).then(function (response) {
           response.data;
         })["catch"](function (error) {
           console.log(error);
@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     asiganarMenu: function asiganarMenu(id, tipoMenu, idMenuDepende, idRol) {
       try {
-        axios.post('/consorcioceag/public/api/menu/agregar/' + id + '/' + tipoMenu + '/' + idMenuDepende + '/' + idRol).then(function (response) {
+        axios.post('/api/menu/agregar/' + id + '/' + tipoMenu + '/' + idMenuDepende + '/' + idRol).then(function (response) {
           response.data;
         })["catch"](function (error) {
           console.log(error);

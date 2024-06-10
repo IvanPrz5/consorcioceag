@@ -25,7 +25,7 @@ __webpack_require__.r(__webpack_exports__);
     allSistemas: function allSistemas() {
       var _this = this;
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token'); // obtener el token de la aplicaccion
-      axios.get('/consorcioceag/public/api/allSistemas/' + this.$store.state.user.id + '/' + this.$store.state.empresa.id).then(function (response) {
+      axios.get('/api/allSistemas/' + this.$store.state.user.id + '/' + this.$store.state.empresa.id).then(function (response) {
         _this.sistemas = response.data;
         if (_this.sistemas.length == 1) {
           _this.Menu(_this.sistemas[0]);
@@ -44,7 +44,7 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem('_sistema', JSON.stringify(sistema)); // para manjarlo local stor3e
       this.$store.commit("setMenuMostrar", true);
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token'); // obtener el token de la aplicaccion
-      axios.post('/consorcioceag/public/api/menu/' + this.$store.state.user.id + '/' + sistema.id).then(function (response) {
+      axios.post('/api/menu/' + this.$store.state.user.id + '/' + sistema.id).then(function (response) {
         _this2.$store.commit("setMenu", response.data);
         localStorage.setItem('_menu', JSON.stringify(response.data)); // para manjarlo local stor3e
       })["catch"](function (error) {

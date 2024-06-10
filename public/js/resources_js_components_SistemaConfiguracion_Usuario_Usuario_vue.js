@@ -74,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     initialize: function initialize() {
       var _this = this;
-      axios.get('/consorcioceag/public/api/usuarios').then(function (response) {
+      axios.get('/api/usuarios').then(function (response) {
         _this.usuarios = null;
         _this.usuarios = response.data;
       })["catch"](function (error) {
@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     borrarUsuario: function borrarUsuario() {
       var _this2 = this;
-      axios["delete"]('/consorcioceag/public/api/usuarios/' + this.usuarioSelcionado.id).then(function (response) {
+      axios["delete"]('/api/usuarios/' + this.usuarioSelcionado.id).then(function (response) {
         _this2.usuarioSelcionado.estatus = !_this2.usuarioSelcionado.estatus;
         _this2.dialogDelete = false;
         _this2.mostrarNoificacion(_this2.usuarioSelcionado.email + '  ESTATUS ACTUALIZADO', false);
