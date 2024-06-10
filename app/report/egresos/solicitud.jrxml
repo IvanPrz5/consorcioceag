@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="solicitud" language="groovy" pageWidth="576" pageHeight="756" columnWidth="464" leftMargin="56" rightMargin="56" topMargin="0" bottomMargin="0" uuid="e4b4105b-b5fa-4e05-93a0-b1d5a2428b88">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="136"/>
+	<parameter name="municipio" class="java.lang.String"/>
+	<parameter name="distrito" class="java.lang.String"/>
+	<parameter name="nombre1" class="java.lang.String"/>
+	<parameter name="nombre2" class="java.lang.String"/>
+	<parameter name="cargo" class="java.lang.String"/>
+	<parameter name="cargo2" class="java.lang.String"/>
+	<parameter name="texto1" class="java.lang.String"/>
+	<parameter name="texto2" class="java.lang.String"/>
+	<parameter name="fechaLetra" class="java.lang.String"/>
+	<parameter name="nombreFijo" class="java.lang.String"/>
+	<parameter name="cargoFijo" class="java.lang.String"/>
+	<parameter name="fondo" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="totalLetra" class="java.lang.String"/>
+	<parameter name="asunto" class="java.lang.String"/>
+	<background>
+		<band height="756" splitType="Stretch">
+			<image>
+				<reportElement x="-59" y="0" width="580" height="756" uuid="ead27c10-ce48-42e8-9bb8-821af22d080c"/>
+				<imageExpression><![CDATA[$P{fondo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="752" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="105" width="454" height="20" uuid="a2514a17-176f-4caa-b6b7-85124e434ae2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{municipio}+", DISTRITO DE "+$P{distrito}+", OAX. A "+$P{fechaLetra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="244" y="125" width="220" height="20" uuid="1e7aa3df-8639-49ae-b520-562610b686e0"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ASUNTO: SOLICITUD DE " + $P{asunto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="138" width="273" height="66" uuid="dd656102-8a90-4140-8035-cc3ed88eb017"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre1}+ "\n"+$P{cargo}+"  \n"+$P{municipio}+","+$P{distrito}+", OAXACA.\n"+"PRESENTE:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="280" width="464" height="69" uuid="aea79aa3-8a54-4962-9fc9-6de9e089cf59"/>
+				<textElement textAlignment="Justified">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Quien suscribe C. "+$P{nombre2}+", en mi carácter de "+$P{cargo2}+" del H. Ayuntamiento Constitucional del "+$P{municipio}+", Distrito de "+$P{distrito}+", Estado de Oaxaca, por este medio solicito lo siguiente:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="354" width="464" height="123" uuid="8be331d5-00c0-450c-a2bb-f589e1c02747"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["La compra de "+$P{texto1}+" para uso de "+$P{texto2}+" por la cantidad de " +$P{total}+ " ( " +$P{totalLetra}+ " M.N.)."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="506" width="446" height="20" uuid="906eaca6-4900-43cc-9433-e45e879563b6"/>
+				<textFieldExpression><![CDATA["Sin más por el momento, agradezco la atencion a la presente."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="529" width="100" height="20" uuid="bcff4c2a-94ae-437c-a963-1ed69f7b1dbd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ATENTAMENTE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="604" width="464" height="56" uuid="0743ee92-bb24-46a9-bcd8-6f59fccf7e17"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["C."+$P{nombre2}+"\n"+$P{cargo2}+"\n H.AYUNTAMINETO DE "+$P{municipio}+",\n DISTRITO "+$P{distrito}+", OAXACA."]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="133" y="587" width="223" height="1" uuid="498a99de-79bb-4ea5-854c-55d415a77d80"/>
+			</line>
+			<textField>
+				<reportElement x="210" y="204" width="254" height="66" uuid="b03bccc4-a3dc-4053-a28f-f09fd88dd4d3"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["AT´N "+$P{nombreFijo}+" \n "+$P{municipio}+",\n "+$P{distrito}+", OAXACA."]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

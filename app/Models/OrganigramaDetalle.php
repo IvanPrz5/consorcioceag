@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class OrganigramaDetalle extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'idEmpresa',
+        'idOrganigrama',
+        'año',
+        'nombre',
+        'estatus',
+
+    ];
+
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+}

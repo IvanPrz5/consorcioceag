@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="autorizacion" language="groovy" pageWidth="572" pageHeight="752" columnWidth="460" leftMargin="56" rightMargin="56" topMargin="0" bottomMargin="0" uuid="8ba26425-7dd3-44ee-9bc2-c12880d198d3">
+	<property name="ireport.zoom" value="0.9090909090909096"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="116"/>
+	<parameter name="municipio" class="java.lang.String"/>
+	<parameter name="distrito" class="java.lang.String"/>
+	<parameter name="nombre1" class="java.lang.String"/>
+	<parameter name="nombre2" class="java.lang.String"/>
+	<parameter name="nombre3" class="java.lang.String"/>
+	<parameter name="cargo" class="java.lang.String"/>
+	<parameter name="cargo2" class="java.lang.String"/>
+	<parameter name="cargo3" class="java.lang.String"/>
+	<parameter name="texto1" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="fecha2" class="java.lang.String"/>
+	<parameter name="fechaLetra" class="java.lang.String"/>
+	<parameter name="texto2" class="java.lang.String"/>
+	<parameter name="fondo" class="java.lang.String"/>
+	<background>
+		<band height="752" splitType="Stretch">
+			<image>
+				<reportElement x="-58" y="0" width="572" height="752" uuid="bd9f81b9-7412-4af2-a6f0-21f5fdd49523"/>
+				<imageExpression><![CDATA[$P{fondo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="752" splitType="Stretch">
+			<line>
+				<reportElement x="113" y="611" width="223" height="1" uuid="cb563665-cda9-4ef5-b22d-63954b9091d7"/>
+			</line>
+			<textField>
+				<reportElement x="244" y="474" width="216" height="56" uuid="aa1bcb00-afa8-4a6f-983b-83c9dbdef396"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["C."+$P{nombre2}+"\n"+$P{cargo2}+"\n H.AYUNTAMINETO DE "+$P{municipio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="84" width="454" height="20" uuid="be7928ad-e81b-4ffa-b4d1-2555f5e58bff"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{municipio}+", DISTRITO DE "+$P{distrito}+", OAX. A "+$P{fechaLetra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="277" width="458" height="123" uuid="0b60c600-9815-4c13-9c54-026edcf07016"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Le informo que con esta fecha se recibió en la Tesorería Municipal los siguientes bienes consistentes en:  "+$P{texto1}+" es importante señalar que dichos materiales se utilizarán para "+$P{texto2} +"."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="624" width="458" height="56" uuid="c486536c-3482-4a1f-9032-9ca1d75815b0"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["C."+$P{nombre2}+"\n"+$P{cargo2}+"\n H.AYUNTAMINETO DE "+$P{municipio}+",\n DISTRITO "+$P{distrito}+", OAXACA."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="559" width="100" height="20" uuid="c13471ea-0850-47da-9a76-591faf594e62"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ATENTAMENTE"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="473" width="227" height="1" uuid="7fdf0f85-c1e3-42ba-8c81-03c0dd9f4a7f"/>
+			</line>
+			<textField>
+				<reportElement x="2" y="539" width="458" height="20" uuid="d2130dfa-3b81-4c06-ac8e-fb80e8b4ba2f"/>
+				<textFieldExpression><![CDATA["Sin más por el momento y esperando una pronta respuesta, le envío un cordial saludo."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="124" width="433" height="66" uuid="8e4cbf00-55a7-49d3-b086-2389b5fb0a4c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre1}+ "\n"+$P{cargo}+"   \n"+$P{municipio}+","+$P{distrito}+", OAXACA.\n"+"PRESENTE:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="104" width="249" height="20" uuid="b8e5522c-1fc8-4cf1-9b15-73ff47576652"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ASUNTO: CONSTANCIA RECEPCION DE BIENES"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="258" y="404" width="202" height="20" uuid="a40cb9a6-43bc-46d0-a90e-e5e540bf6679"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma de recibido a entera satisfacción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="404" width="229" height="20" uuid="7fe21db0-9608-4fef-a05d-0596415b64b1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma de entregado de los bienes y materiales.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="253" y="472" width="207" height="1" uuid="f996ad70-2bbf-45ea-8a55-d57e4e86e7f2"/>
+			</line>
+			<staticText>
+				<reportElement x="55" y="474" width="100" height="20" uuid="ccdbb405-2cc0-4f91-9af2-a8051e706c88"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma proveedor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="2" y="193" width="458" height="69" uuid="07f2ea1a-4294-4233-aeab-1d7a44f28b5c"/>
+				<textElement textAlignment="Justified">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El que suscribe C. "+$P{nombre2}+", en mi carácter de "+$P{cargo2}+" del H. Ayuntamiento Constitucional del "+$P{municipio}+", Distrito de "+$P{distrito}+", Estado de Oaxaca, por este medio, me dirijo a usted con el debido respeto para exponerle lo siguiente:"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

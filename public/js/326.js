@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[326],{9326:(u,e,l)=>{l.r(e),l.d(e,{default:()=>n});const n=(0,l(4486).A)({},(function(){var u=this._self._c;return u("div",[u("Menu")],1)}),[],!1,null,null,null).exports}}]);
