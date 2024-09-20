@@ -40,9 +40,15 @@ class CreateEgresoXmlsTable extends Migration
             $table->string('solicito');
             $table->string('solicitoNombre',500);
 
+            $table->string('numOficio', 50);
             
             $table->string('asunto',300);
             $table->string('ramo',300);
+
+            $table->string('personaMoral',255);
+            $table->string('representanteLegal',255);
+            $table->string('fechaLlegada',45);
+
 
             $table->boolean('estatus')->default(true);
 

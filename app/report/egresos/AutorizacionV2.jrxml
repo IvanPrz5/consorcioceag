@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="autorizacion" language="groovy" pageWidth="572" pageHeight="752" columnWidth="460" leftMargin="56" rightMargin="56" topMargin="0" bottomMargin="0" uuid="8ba26425-7dd3-44ee-9bc2-c12880d198d3">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="528"/>
+	<parameter name="municipio" class="java.lang.String"/>
+	<parameter name="distrito" class="java.lang.String"/>
+	<parameter name="nombre1" class="java.lang.String"/>
+	<parameter name="nombre2" class="java.lang.String"/>
+	<parameter name="nombre3" class="java.lang.String"/>
+	<parameter name="cargo" class="java.lang.String"/>
+	<parameter name="cargo2" class="java.lang.String"/>
+	<parameter name="cargo3" class="java.lang.String"/>
+	<parameter name="texto1" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="fecha2" class="java.lang.String"/>
+	<parameter name="texto2" class="java.lang.String"/>
+	<parameter name="fondo" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="totalLetra" class="java.lang.String"/>
+	<parameter name="ramo" class="java.lang.String"/>
+	<parameter name="anio" class="java.lang.String"/>
+	<parameter name="asunto" class="java.lang.String"/>
+	<parameter name="numOficio" class="java.lang.String"/>
+	<parameter name="headerImg" class="java.lang.String"/>
+	<parameter name="footerImg" class="java.lang.String"/>
+	<background>
+		<band height="752" splitType="Stretch">
+			<image>
+				<reportElement x="-55" y="0" width="572" height="752" uuid="3c5433e2-6cd8-4698-8908-7989d45adf3e"/>
+				<imageExpression><![CDATA[$P{fondo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="50">
+			<image scaleImage="RealSize">
+				<reportElement x="-55" y="0" width="571" height="50" uuid="b835350b-ea6f-4016-93c7-675c189e019f"/>
+				<imageExpression><![CDATA[$P{headerImg}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="354" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="170" width="460" height="75" uuid="f84fb2a3-7e0f-4371-a96d-b1ec3d09b987"/>
+				<textElement textAlignment="Justified">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["C. "+$P{nombre2}+" "+ $P{cargo2} +" del Municipio de "+$P{municipio}+", Distrito "+$P{distrito}+" ,Oaxaca., con fundamento en los articulos 1, 2, 3, 87, 88 fracción II, 89, 90, 94,95 fracción XXIV de la Ley Orgánica Municipal del Estado de Oaxaca; 1, 2, 3, 4, 5, 56, 57 fracciones I y VII del Bando de Policía y Buen Gobierno del Municipio de " + $P{municipio}+ " Distrito " + $P{distrito}+ ", Oaxaca vigente, al respecto de le informo lo siguiente:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="75" width="454" height="20" uuid="1c38a696-62c9-4343-9888-f270f7560bdb"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{municipio}+", DISTRITO DE "+$P{distrito}+", OAX., A "+$P{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="102" width="397" height="58" uuid="278fcd36-8b48-4eb6-b2a0-9900adabe321"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["C. " + $P{nombre1}+ "\n"+$P{cargo}+ " CONSTITUCIONAL" + "\nDE "+$P{municipio}+","+$P{distrito}+", OAXACA."+"\nPRESENTE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="217" y="55" width="52" height="20" uuid="6e63685d-75d7-4121-88b2-f9ccdcb78def"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Asunto:"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="249" width="459" height="105" isPrintWhenDetailOverflows="true" uuid="49a96add-8a49-4997-9463-8c8ad2485989"/>
+				<textElement textAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En atención a su requerimiento de compra de fecha 12 de 04 de " + $P{anio}   + ", en la que solicita la autorización para la adquisición de: "+$P{texto1}+ " para "+ $P{texto2} + ", al respecto le informo que se autoriza el proceso de adquisición, toda vez, que se cuenta con suficiencia presupuestaria, lo anterior, tomando en consideración las cotizaciones y el cuado comparativo que representan las mejores condiciones de contratación."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="55" width="189" height="20" uuid="ac08d3bd-a8da-41d6-8d97-0e9ddaf38806"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Autorización de la Adquisición y Compra."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="35" width="254" height="20" uuid="5c6fa507-9eb9-42e6-8f49-850883747508"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Número de Oficio: "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="15" width="199" height="20" uuid="37ffa4f6-3253-4dd8-873c-f739c126ed76"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tesorería Municipal"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="35" width="103" height="20" uuid="a6529cef-8cf3-4ccc-bbd3-b861f9ee1d59"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numOficio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="50">
+			<image>
+				<reportElement x="-55" y="0" width="571" height="50" uuid="90657d95-62be-401a-9887-fefe4c2531b2"/>
+				<imageExpression><![CDATA[$P{footerImg}]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="202" splitType="Stretch">
+			<line>
+				<reportElement x="113" y="130" width="223" height="1" uuid="fe54c60e-98ac-46f5-8d3e-86c4c6a46042"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="146" width="458" height="56" uuid="6d82f7bd-592c-4e67-b969-2b092e1ee968"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["C."+$P{nombre2}+"\n "+$P{cargo2}+" \nDE "+$P{municipio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="70" width="100" height="20" uuid="f0b8f8d7-b937-4b4e-b5a9-a3812160fdb7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ATENTAMENTE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="0" y="21" width="459" height="25" uuid="07a0226c-8ee0-4fa4-87fc-27ed3da9dc7b"/>
+				<textElement textAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sin otro particular, reciba mis cordiales. Saludos."]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

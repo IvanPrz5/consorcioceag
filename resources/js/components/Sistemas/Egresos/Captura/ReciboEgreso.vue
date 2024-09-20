@@ -90,6 +90,7 @@
           </v-btn>
         </div>
       </template>
+
       <template v-slot:item.recepcion="{ item }">
         <div align="center" justify="center">
           <v-btn small dark color="green" fab @click="pdfRecepcion(item.id)">
@@ -97,6 +98,13 @@
           </v-btn>
         </div>
       </template>
+      <!-- <template v-slot:item.recepcion="{ item }">
+        <div align="center" justify="center">
+          <v-btn small dark color="green" fab @click="pdfRecepcion(item.id)">
+            <v-icon dark> mdi-file-pdf-box </v-icon>
+          </v-btn>
+        </div>
+      </template> -->
 
       <!-- <template v-slot:item.formatos2="{ item }">
         <div align="center" justify="center">
@@ -129,7 +137,7 @@
         </div>
       </template> -->
 
-      <template v-slot:item.actions="{ item }">
+      <template v-slot:item.actions="{ item }" class="d-flex">
         <v-dialog max-width="1200">
           <template v-slot:activator="{ on, attrs }">
             <v-icon color="secondary" dark v-bind="attrs" v-on="on" class="pr-2">
@@ -150,6 +158,9 @@
             </v-card>
           </template>
         </v-dialog>
+        <v-icon color="error" @click="eliminarEgreso(item)" dark class="pr-2">
+          mdi-delete
+        </v-icon>
       </template>
 
       <template v-slot:no-data>
@@ -340,7 +351,7 @@ export default {
     },
     pdfRecepcion(id) {
       axios
-        .get("/api/reporteRecepcion/" + id)
+        .get("/api/reporteEgresoRecepcion/" + id)
         .then((response) => {
           //  console.log( response  )
 
@@ -474,6 +485,19 @@ export default {
           this.initialize();
         });
     },
+    eliminarEgreso(item){
+      axios
+        .put("/api/egresos/eliminarEgreso/" + item.id)
+        .then((response) => {
+          console.log(response)
+          this.mostrarNoificacion("SE ELIMINO", false);
+          this.initialize();
+        })
+        .catch((error) => {
+          console.log(error)
+          this.initialize();
+        });
+    }
   },
 };
 </script>

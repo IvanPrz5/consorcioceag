@@ -21,6 +21,9 @@ class EgresoXmlController extends Controller
 
     }
 
+    public function eliminarEgreso($id){
+        return egresoXml::where('id', '=', $id)->update(['estatus' => false]);
+    }
 
     public function subirImagen (Request $request){
 

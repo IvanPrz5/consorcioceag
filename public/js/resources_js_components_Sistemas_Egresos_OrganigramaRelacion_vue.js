@@ -1,3 +1,4 @@
+"use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Sistemas_Egresos_OrganigramaRelacion_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=script&lang=js":
@@ -6,7 +7,6 @@
   \******************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -14,6 +14,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      rol: {
+        descripcion: '',
+        estatus: true
+      },
+      nuevoCargo: false,
       año: 0,
       //  new Date().getUTCFullYear();
       años: [],
@@ -142,6 +147,18 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this5.mostrarNoificacion("No es posible borrar-", true);
       });
+    },
+    agregarCargo: function agregarCargo() {
+      this.nuevoCargo = true;
+    },
+    agregarOrga: function agregarOrga() {
+      var _this6 = this;
+      axios.post("/api/organigrama/nueva", this.rol).then(function (response) {
+        _this6.cargaOrganigramaDisponibles();
+        _this6.nuevoCargo = false;
+      })["catch"](function (error) {
+        console.log("Fatal " + error);
+      });
     }
   }
 });
@@ -154,7 +171,6 @@ __webpack_require__.r(__webpack_exports__);
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   render: () => (/* binding */ render),
@@ -271,6 +287,7 @@ var render = function render() {
             expression: "nombreNuevo"
           }
         })], 1), _vm._v(" "), _c("v-col", {
+          staticClass: "d-flex",
           attrs: {
             cols: "12"
           }
@@ -291,7 +308,14 @@ var render = function render() {
             },
             expression: "orgaNuevo"
           }
-        })], 1), _vm._v(" "), _c("v-col", {
+        }), _vm._v(" "), _c("v-btn", {
+          attrs: {
+            color: "success"
+          },
+          on: {
+            click: _vm.agregarCargo
+          }
+        }, [_vm._v("\n                      Agregar\n                    ")])], 1), _vm._v(" "), _c("v-col", {
           attrs: {
             cols: "12"
           }
@@ -302,7 +326,7 @@ var render = function render() {
           attrs: {
             align: "center"
           }
-        }, [_vm._v(" " + _vm._s(_vm.error))])])], 1)], 1)], 1)], 1), _vm._v(" "), _c("v-card-actions", {
+        }, [_vm._v(_vm._s(_vm.error))])])], 1)], 1)], 1)], 1), _vm._v(" "), _c("v-card-actions", {
           staticClass: "justify-end"
         }, [_c("v-btn", {
           attrs: {
@@ -468,7 +492,47 @@ var render = function render() {
         })];
       }
     }])
-  })]], 2)], 1);
+  })]], 2), _vm._v(" "), _c("v-dialog", {
+    attrs: {
+      width: "500"
+    },
+    model: {
+      value: _vm.nuevoCargo,
+      callback: function callback($$v) {
+        _vm.nuevoCargo = $$v;
+      },
+      expression: "nuevoCargo"
+    }
+  }, [_c("v-card", {
+    staticClass: "px-5 pt-5 pb-5"
+  }, [_c("v-row", {
+    attrs: {
+      "no-gutters": ""
+    }
+  }, [_c("v-col", {
+    attrs: {
+      cols: "12"
+    }
+  }, [_c("v-text-field", {
+    attrs: {
+      outlined: "",
+      label: "Cargo"
+    },
+    model: {
+      value: _vm.rol.descripcion,
+      callback: function callback($$v) {
+        _vm.$set(_vm.rol, "descripcion", $$v);
+      },
+      expression: "rol.descripcion"
+    }
+  })], 1), _vm._v(" "), _c("v-col", [_c("v-btn", {
+    attrs: {
+      color: "success"
+    },
+    on: {
+      click: _vm.agregarOrga
+    }
+  }, [_vm._v("Agregar Organigrama")])], 1)], 1)], 1)], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -482,7 +546,6 @@ render._withStripped = true;
   \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -490,10 +553,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _OrganigramaRelacion_vue_vue_type_template_id_20e67cff__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrganigramaRelacion.vue?vue&type=template&id=20e67cff */ "./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=template&id=20e67cff");
 /* harmony import */ var _OrganigramaRelacion_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrganigramaRelacion.vue?vue&type=script&lang=js */ "./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=script&lang=js");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-/* harmony import */ var _OrganigramaRelacion_vue_vue_type_custom_index_0_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionValidad_color_green_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OrganigramaRelacion.vue?vue&type=custom&index=0&blockType=v-snackbar&%3Atimeout=1500&%3Avalue=true&v-model=notificacionValidad&color=green&absolute=true&top=true&shaped=true&transition=scroll-y-transition */ "./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=custom&index=0&blockType=v-snackbar&%3Atimeout=1500&%3Avalue=true&v-model=notificacionValidad&color=green&absolute=true&top=true&shaped=true&transition=scroll-y-transition");
-/* harmony import */ var _OrganigramaRelacion_vue_vue_type_custom_index_0_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionValidad_color_green_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_OrganigramaRelacion_vue_vue_type_custom_index_0_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionValidad_color_green_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _OrganigramaRelacion_vue_vue_type_custom_index_1_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionError_color_red_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./OrganigramaRelacion.vue?vue&type=custom&index=1&blockType=v-snackbar&%3Atimeout=1500&%3Avalue=true&v-model=notificacionError&color=red&absolute=true&top=true&shaped=true&transition=scroll-y-transition */ "./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=custom&index=1&blockType=v-snackbar&%3Atimeout=1500&%3Avalue=true&v-model=notificacionError&color=red&absolute=true&top=true&shaped=true&transition=scroll-y-transition");
-/* harmony import */ var _OrganigramaRelacion_vue_vue_type_custom_index_1_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionError_color_red_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_OrganigramaRelacion_vue_vue_type_custom_index_1_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionError_color_red_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -512,12 +571,6 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
   
 )
 
-/* custom blocks */
-;
-if (typeof (_OrganigramaRelacion_vue_vue_type_custom_index_0_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionValidad_color_green_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_3___default()) === 'function') _OrganigramaRelacion_vue_vue_type_custom_index_0_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionValidad_color_green_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_3___default()(component)
-;
-if (typeof (_OrganigramaRelacion_vue_vue_type_custom_index_1_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionError_color_red_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_4___default()) === 'function') _OrganigramaRelacion_vue_vue_type_custom_index_1_blockType_v_snackbar_3Atimeout_1500_3Avalue_true_v_model_notificacionError_color_red_absolute_true_top_true_shaped_true_transition_scroll_y_transition__WEBPACK_IMPORTED_MODULE_4___default()(component)
-
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue"
@@ -531,7 +584,6 @@ component.options.__file = "resources/js/components/Sistemas/Egresos/Organigrama
   \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -547,33 +599,12 @@ __webpack_require__.r(__webpack_exports__);
   \********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_OrganigramaRelacion_vue_vue_type_template_id_20e67cff__WEBPACK_IMPORTED_MODULE_0__.render),
 /* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_OrganigramaRelacion_vue_vue_type_template_id_20e67cff__WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_OrganigramaRelacion_vue_vue_type_template_id_20e67cff__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OrganigramaRelacion.vue?vue&type=template&id=20e67cff */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=template&id=20e67cff");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=custom&index=0&blockType=v-snackbar&%3Atimeout=1500&%3Avalue=true&v-model=notificacionValidad&color=green&absolute=true&top=true&shaped=true&transition=scroll-y-transition":
-/*!***************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=custom&index=0&blockType=v-snackbar&%3Atimeout=1500&%3Avalue=true&v-model=notificacionValidad&color=green&absolute=true&top=true&shaped=true&transition=scroll-y-transition ***!
-  \***************************************************************************************************************************************************************************************************************************************************************/
-/***/ (() => {
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=custom&index=1&blockType=v-snackbar&%3Atimeout=1500&%3Avalue=true&v-model=notificacionError&color=red&absolute=true&top=true&shaped=true&transition=scroll-y-transition":
-/*!***********************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./resources/js/components/Sistemas/Egresos/OrganigramaRelacion.vue?vue&type=custom&index=1&blockType=v-snackbar&%3Atimeout=1500&%3Avalue=true&v-model=notificacionError&color=red&absolute=true&top=true&shaped=true&transition=scroll-y-transition ***!
-  \***********************************************************************************************************************************************************************************************************************************************************/
-/***/ (() => {
-
 
 
 /***/ })

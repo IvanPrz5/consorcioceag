@@ -90,7 +90,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       this.initialize();
     }
   },
-  methods: _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({
+  methods: _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({
     prueba: function prueba() {
       if (this.$refs.egresoCaptura == undefined) {} else {
         this.$refs.egresoCaptura.actualizarAño(this.año);
@@ -153,7 +153,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     },
     pdfRecepcion: function pdfRecepcion(id) {
       var _this4 = this;
-      axios.get("/api/reporteRecepcion/" + id).then(function (response) {
+      axios.get("/api/reporteEgresoRecepcion/" + id).then(function (response) {
         //  console.log( response  )
 
         window.open(response.data, "_blank"); //to open in new tab
@@ -238,6 +238,16 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       _this8.dialogDelete = false;
       _this8.mostrarNoificacion("  ESTATUS  NO ACTUALIZADO", true);
       _this8.initialize();
+    });
+  }), "eliminarEgreso", function eliminarEgreso(item) {
+    var _this9 = this;
+    axios.put("/api/egresos/eliminarEgreso/" + item.id).then(function (response) {
+      console.log(response);
+      _this9.mostrarNoificacion("SE ELIMINO", false);
+      _this9.initialize();
+    })["catch"](function (error) {
+      console.log(error);
+      _this9.initialize();
     });
   })
 });
@@ -568,7 +578,18 @@ var render = function render() {
               })], 1)];
             }
           }], null, true)
-        })];
+        }), _vm._v(" "), _c("v-icon", {
+          staticClass: "pr-2",
+          attrs: {
+            color: "error",
+            dark: ""
+          },
+          on: {
+            click: function click($event) {
+              return _vm.eliminarEgreso(item);
+            }
+          }
+        }, [_vm._v("\n        mdi-delete\n      ")])];
       }
     }, {
       key: "no-data",

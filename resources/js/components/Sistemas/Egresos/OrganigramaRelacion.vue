@@ -1,16 +1,16 @@
 <template>
   <div>
-        <v-card max-width="60%" class="mx-auto" elevation="13">
-        <v-list-item two-line>
-            <v-list-item-content>
-            <v-list-item-title class="text-h5" align="center">
-                <p>Organigrama de Autoridades</p>
-            </v-list-item-title>
-            <v-list-item-subtitle align="center">
-                <p>{{ año }}</p>
-            </v-list-item-subtitle>
-            </v-list-item-content>
-        </v-list-item>
+    <v-card max-width="60%" class="mx-auto" elevation="13">
+      <v-list-item two-line>
+        <v-list-item-content>
+          <v-list-item-title class="text-h5" align="center">
+            <p>Organigrama de Autoridades</p>
+          </v-list-item-title>
+          <v-list-item-subtitle align="center">
+            <p>{{ año }}</p>
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
 
       <v-divider class="mx-4"></v-divider>
       <br />
@@ -41,6 +41,7 @@
             >Agregar Nuevo</v-btn
           >
         </template>
+
         <template v-slot:default="dialog">
           <v-card>
             <v-toolbar color="primary" dark>Nuevo Organigrama</v-toolbar>
@@ -51,7 +52,6 @@
                     <v-col cols="12">
                       <v-text-field
                         v-model="nombreNuevo"
-                        
                         placeholder="Ingrese el nombre que aparecera en el sistema"
                         label="Nombre"
                         outlined
@@ -62,7 +62,7 @@
                       ></v-text-field>
                     </v-col>
 
-                    <v-col cols="12">
+                    <v-col cols="12" class="d-flex">
                       <v-combobox
                         small-chips
                         dense
@@ -72,11 +72,13 @@
                         :items="orgaTipo"
                         item-text="descripcion"
                         item-value="id"
-                        ></v-combobox>
+                      ></v-combobox>
+                      <v-btn color="success" @click="agregarCargo">
+                        Agregar
+                      </v-btn>
                     </v-col>
                     <v-col cols="12">
-
-                            <p  align="center" style="color: red;"   > {{error}}</p>
+                      <p align="center" style="color: red">{{ error }}</p>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -124,7 +126,6 @@
                           <v-col cols="12">
                             <v-text-field
                               v-model="nombreEditar"
-                              
                               placeholder="Ingrese el nombre que aparecera en el sistema"
                               label="Nombre"
                               outlined
@@ -183,32 +184,31 @@
             </v-dialog>
           </template>
         </v-data-table>
-      </template></v-card
-    >
-  </div>
-</template>
-
-
-
+      </template>
     </v-card>
-
-
-
-   <v-snackbar :timeout="1500" :value="true" v-model="notificacionValidad" color="green" absolute top shaped transition="scroll-y-transition">
-        {{ mensajeNoificacion }}
-    </v-snackbar>
-
-    <v-snackbar :timeout="1500" :value="true" v-model="notificacionError" color="red" absolute top shaped transition="scroll-y-transition">
-        {{ mensajeNoificacion }}
-    </v-snackbar>
-
+    <v-dialog v-model="nuevoCargo" width="500">
+      <v-card class="px-5 pt-5 pb-5">
+        <v-row no-gutters>
+          <v-col cols="12">
+            <v-text-field outlined label="Cargo" v-model="rol.descripcion"></v-text-field>
+          </v-col>
+          <v-col>
+            <v-btn color="success" @click="agregarOrga">Agregar Organigrama</v-btn>
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
-
 
 <script>
 export default {
   data: () => ({
+    rol: {
+      descripcion: '',
+      estatus: true,
+    },
+    nuevoCargo: false,
     año: 0, //  new Date().getUTCFullYear();
     años: [],
     detalle: [],
@@ -290,9 +290,8 @@ export default {
         const empresa = JSON.parse(localStorage.getItem("_empresa"));
         const usuario = JSON.parse(localStorage.getItem("_usuario"));
 
-
         if (typeof this.orgaNuevo.id === "undefined") {
-                this.error = "POR FAVOR COLOQUE UN AÑO VALIDO"
+          this.error = "POR FAVOR COLOQUE UN AÑO VALIDO";
         } else {
           axios
             .post("/api/crearOrganigramaDetalle", {
@@ -306,18 +305,16 @@ export default {
               this.rellenarOrganigrama();
               this.orgaNuevo = null;
               this.nombreNuevo = "";
-               this.error = "";
+              this.error = "";
 
               dialog.value = false;
             })
             .catch((error) => {
-                 this.error =  "NO ES POSIBLE GUARDAR EL EMPLEADO"
-
+              this.error = "NO ES POSIBLE GUARDAR EL EMPLEADO";
             });
         }
       } else {
-           this.error = "Rellnar todo los datos por favro";
-
+        this.error = "Rellnar todo los datos por favro";
       }
     },
     editarItem(dialog, id) {
@@ -351,7 +348,20 @@ export default {
           this.mostrarNoificacion("No es posible borrar-", true);
         });
     },
+    agregarCargo() {
+      this.nuevoCargo = true;
+    },
+    agregarOrga(){
+      axios
+        .post("/api/organigrama/nueva", this.rol)
+        .then((response) => {
+          this.cargaOrganigramaDisponibles();
+          this.nuevoCargo = false;
+        })
+        .catch((error) => {
+          console.log("Fatal " + error)
+        });
+    }
   },
 };
 </script>
-

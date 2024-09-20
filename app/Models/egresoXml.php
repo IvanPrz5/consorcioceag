@@ -31,6 +31,10 @@ class egresoXml extends Model
         'solicitoNombre',
         'asunto',
         'ramo',
+        'numOficio',
+        'personaMoral',
+        'representanteLegal',
+        'fechaLlegada',
         'estatus'
 
 

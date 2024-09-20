@@ -14,6 +14,7 @@ use App\Http\Controllers\OrganigramaController;
 use App\Http\Controllers\OrganigramaDetalleController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\UtileriasController;
+use App\Http\Controllers\XmlConceptoController;
 use App\Models\Formatos;
 use App\Models\OrganigramaDetalle;
 // use App\Http\Controllers\Egresos\EgresosSolicitudController;
@@ -158,6 +159,7 @@ Route::post('/egresos/crearSolicitud',[EgresosSolicitudController::class,'crearS
 
 Route::get('/egresos/allSolicitudes/{idEmpresa}/{fecha}',[EgresosSolicitudController::class,'solicitudes']);
 Route::post('/egresos/crearSolicitud',[EgresosSolicitudController::class,'crearSolicitud']);
+Route::put('/egresos/eliminarEgreso/{id}',[EgresoXmlController::class,'eliminarEgreso']);
 
 
 Route::get('/egresos/allegresosXml/{mes}/{anio}/{idEmpresa}',[EgresoXmlController::class,'allEgresoXml']);
@@ -178,4 +180,10 @@ Route::post('/xmlArray',[UtileriasController::class,'xmlArray']);
 
 Route::get('/reporteEgresoSolicitud/{idEgreso}',[ReportesController::class,'reporteEgresoSolicitud']);
 Route::get('/reporteEgresoAutorizacion/{idEgreso}',[ReportesController::class,'reporteEgresoAutorizacion']);
-Route::get('/reporteRecepcion/{idEgreso}',[ReportesController::class,'reporteRecepcion']);
+Route::get('/reporteEgresoRecepcion/{idEgreso}',[ReportesController::class,'reporteEgresoRecepcion']);
+
+
+//Route::get('/reporteRecepcion/{idEgreso}',[ReportesController::class,'reporteRecepcion']);
+
+
+Route::post('/guardarXmlConcepto', [XmlConceptoController::class, 'guardarConcepto']);

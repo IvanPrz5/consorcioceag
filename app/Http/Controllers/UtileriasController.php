@@ -38,6 +38,18 @@ class UtileriasController extends Controller
         return  $meses;
     }
 
+
+    // function to append a string 
+    public function append_string ($str1, $str2) {
+        
+        // Using Concatenation assignment
+        // operator (.=)
+        $str1 .=$str2;
+        
+        // Returning the result 
+        return $str1;
+    }
+
     public function fechaLetra($fecha)
     {
 
@@ -194,8 +206,10 @@ class UtileriasController extends Controller
 
 
             foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Conceptos//cfdi:Concepto') as $concepto) {
-
-                $xmlObj->concepto = $xmlObj->concepto . '' . $concepto['Cantidad']->__toString()  . ' ' . $concepto['Descripcion']->__toString();
+                $xmlObj->concepto = $xmlObj->concepto . '' . $concepto['Cantidad']->__toString()  . ' ' . $concepto['Descripcion']->__toString() . ', '  ;
+                array_push($xmlObj->arrayCantidad, $concepto['Cantidad']->__toString());
+                array_push($xmlObj->arrayDescripcion, $concepto['Descripcion']->__toString());
+                array_push($xmlObj->arrayImporte, $concepto['Importe']->__toString());
             }
 
 
@@ -236,4 +250,7 @@ class xmlReturn
     public $fechaTimbrado;
     public $uuid;
     public $concepto  = '';
+    public $arrayCantidad = [];
+    public $arrayDescripcion = [];
+    public $arrayImporte = [];
 }
